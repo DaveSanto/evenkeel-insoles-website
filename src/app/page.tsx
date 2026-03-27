@@ -165,7 +165,7 @@ export default function HomePage() {
                 body: "Our trained technicians and machine fabricators build your insole and ship it directly to your door.",
                 icon: iconThirdStep,
               },
-            ].map(({ step, title, body, icon }) => (
+            ].map(({ title, body, icon }) => (
               <div key={step} className="bg-white rounded-lg p-6 shadow-sm flex items-center gap-6 w-full">
                 <div className="flex-shrink-0">
                   <LordIcon
