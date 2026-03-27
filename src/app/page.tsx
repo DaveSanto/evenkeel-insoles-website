@@ -1,5 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import LordIcon from "@/components/LordIcon";
+import iconFirstStep from "@/icons/plidrtis.json";
+import iconSecondStep from "@/icons/actbiatd.json";
+import iconThirdStep from "@/icons/ufbjvsxq.json";
+import iconShipping from "@/icons/tbfvkcmb.json";
+import iconMoneyBack from "@/icons/pjcmqrfd.json";
+import iconHsaFsa from "@/icons/qjysiqyo.json";
 
 const partners = [
   { src: "/patriots.png", alt: "New England Patriots" },
@@ -14,30 +21,37 @@ const features = [
   {
     title: "Long Lasting",
     body: "High quality German engineered foam with a 5+ year guarantee.",
+    icon: null,
   },
   {
     title: "Capable Heel Height",
     body: "1/16\" to 3/8\" inches of heel correction built to your measurements.",
+    icon: null,
   },
   {
     title: "Forefoot Posting",
     body: "Up to 25 degrees of forefoot support for precise biomechanical correction.",
+    icon: null,
   },
   {
     title: "Patented Insole System",
     body: "Computer-aided manufacturing — milled from the bottom up for a perfect fit.",
+    icon: null,
   },
   {
     title: "Free Shipping",
     body: "Every order ships free, directly to your door.",
+    icon: iconShipping,
   },
   {
     title: "Hassle Free Money Back Guarantee",
     body: "42-day money back guarantee. No questions asked.",
+    icon: iconMoneyBack,
   },
   {
     title: "HSA / FSA Approved",
     body: "Pay with your Health Savings or Flexible Spending Account.",
+    icon: iconHsaFsa,
   },
 ];
 
@@ -137,20 +151,30 @@ export default function HomePage() {
                 step: "01",
                 title: "First Step",
                 body: "Purchase your EvenKeel custom insole and download the EvenKeel app.",
+                icon: iconFirstStep,
               },
               {
                 step: "02",
                 title: "Second Step",
                 body: "Use the app to take precise measurements of your feet from home — no doctor's visit required.",
+                icon: iconSecondStep,
               },
               {
                 step: "03",
                 title: "Final Step",
                 body: "Our trained technicians and machine fabricators build your insole and ship it directly to your door.",
+                icon: iconThirdStep,
               },
-            ].map(({ step, title, body }) => (
-              <div key={step} className="bg-white rounded-lg p-8 shadow-sm text-left">
-                <p className="text-5xl font-bold text-[#c7c7c7] mb-4">{step}</p>
+            ].map(({ step, title, body, icon }) => (
+              <div key={step} className="bg-white rounded-lg p-8 shadow-sm text-center">
+                <div className="flex justify-center mb-4">
+                  <LordIcon
+                    icon={icon}
+                    size={120}
+                    colors={{ primary: "#373c97", secondary: "#8930e8" }}
+                  />
+                </div>
+                <p className="text-4xl font-bold text-[#c7c7c7] mb-3">{step}</p>
                 <h3 className="text-lg font-bold text-[#373c97] mb-3">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
               </div>
@@ -174,8 +198,17 @@ export default function HomePage() {
             What Makes EvenKeel Different
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map(({ title, body }) => (
+            {features.map(({ title, body, icon }) => (
               <div key={title} className="border border-[#dddddd] rounded-lg p-6">
+                {icon && (
+                  <div className="mb-3">
+                    <LordIcon
+                      icon={icon}
+                      size={80}
+                      colors={{ primary: "#373c97", secondary: "#8930e8" }}
+                    />
+                  </div>
+                )}
                 <h3 className="text-sm font-bold text-[#373c97] mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
               </div>
