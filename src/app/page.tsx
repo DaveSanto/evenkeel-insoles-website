@@ -63,13 +63,28 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#373c97] text-white py-24 px-4">
-        <div className="max-w-[1240px] mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            Sixty Years Pioneering Therapeutic Orthotic Solutions for Active Lifestyles
+      <section className="relative h-screen min-h-[600px] flex items-center justify-center text-white overflow-hidden">
+        {/* Background video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/brand-video-mobile.webm" type="video/webm" media="(max-width: 767px)" />
+          <source src="/brand-video.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6">
+            Find Joy in Movement
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 mb-4">A Long Journey of Helping Patients</p>
-          <p className="text-base md:text-lg text-blue-200 max-w-2xl mx-auto mb-10">
+          <p className="text-base md:text-xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed">
             Decades of Orthotic Science Specially Built for You in 7 Days. No Doctor&apos;s Visit. Half The Industry Standard Cost.
           </p>
           <Link
