@@ -145,7 +145,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-[#373c97] mb-12">
             How We Deliver a Custom Orthotic in 7 Days
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col items-center gap-6 max-w-2xl mx-auto">
             {[
               {
                 step: "01",
@@ -166,17 +166,18 @@ export default function HomePage() {
                 icon: iconThirdStep,
               },
             ].map(({ step, title, body, icon }) => (
-              <div key={step} className="bg-white rounded-lg p-8 shadow-sm text-center">
-                <div className="flex justify-center mb-4">
+              <div key={step} className="bg-white rounded-lg p-6 shadow-sm flex items-center gap-6 w-full">
+                <div className="flex-shrink-0">
                   <LordIcon
                     icon={icon}
-                    size={120}
+                    size={100}
                     colors={{ primary: "#373c97", secondary: "#8930e8" }}
                   />
                 </div>
-                <p className="text-4xl font-bold text-[#c7c7c7] mb-3">{step}</p>
-                <h3 className="text-lg font-bold text-[#373c97] mb-3">{title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+                <div className="text-left">
+                  <h3 className="text-lg font-bold text-[#373c97] mb-2">{title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -197,18 +198,26 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-[#373c97] text-center mb-12">
             What Makes EvenKeel Different
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map(({ title, body, icon }) => (
+          {/* Top 4 — no icons */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            {features.filter((f) => !f.icon).map(({ title, body }) => (
               <div key={title} className="border border-[#dddddd] rounded-lg p-6">
-                {icon && (
-                  <div className="mb-3">
-                    <LordIcon
-                      icon={icon}
-                      size={80}
-                      colors={{ primary: "#373c97", secondary: "#8930e8" }}
-                    />
-                  </div>
-                )}
+                <h3 className="text-sm font-bold text-[#373c97] mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          {/* Bottom 3 — with icons, always horizontal on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {features.filter((f) => f.icon).map(({ title, body, icon }) => (
+              <div key={title} className="border border-[#dddddd] rounded-lg p-6 text-center">
+                <div className="flex justify-center mb-3">
+                  <LordIcon
+                    icon={icon!}
+                    size={80}
+                    colors={{ primary: "#373c97", secondary: "#8930e8" }}
+                  />
+                </div>
                 <h3 className="text-sm font-bold text-[#373c97] mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
               </div>
